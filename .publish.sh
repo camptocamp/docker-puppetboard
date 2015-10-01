@@ -4,7 +4,7 @@ openssl aes-256-cbc -K $encrypted_264ff60bca14_key -iv $encrypted_264ff60bca14_i
 if [ "$TRAVIS_BRANCH" == "master" ]; then
   echo "Deploying image to docker hub for master (latest)"
   docker push "camptocamp/puppetboard:latest"
-if [ ! -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+elif [ ! -z "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo "Deploying image to docker hub for tag ${TRAVIS_TAG}"
   docker push "camptocamp/puppetboard:${TRAVIS_TAG}"
 elif [ ! -z "$TRAVIS_BRANCH" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
