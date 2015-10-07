@@ -14,8 +14,8 @@ git checkout master
 cat << EOF > settings.py
 import os
 
-PUPPETDB_HOST = os.environ['PUPPETDB_HOST'] or 'puppetdb'
-PUPPETDB_PORT = os.environ['PUPPETDB_PORT'] or 8081
+PUPPETDB_HOST = os.environ.setdefault('PUPPETDB_HOST', 'puppetdb')
+PUPPETDB_PORT = os.environ.setdefault('PUPPETDB_PORT', 8081)
 PUPPETDB_SSL_VERIFY = False
 PUPPETDB_KEY = '/app/puppetboard.key'
 PUPPETDB_CERT = '/app/puppetboard.crt'
