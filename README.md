@@ -10,42 +10,28 @@ Puppetboard Docker image
 
 By default, Puppetboard looks for a PuppetDB on `localhost:8080`, so you need to deploy a configuration file for it.
 
-Let's set up a `wsgi.py` file, which points to `default_settings.py`, e.g.:
-
-```python
-# wsgi.py
-from __future__ import absolute_import
-import os
-
-# Needed if a settings.py file exists
-os.environ['PUPPETBOARD_SETTINGS'] = '/app/default_settings.py'
-from puppetboard.app import app as application
-```
-
-and
-
-```python
-# Minimal default_settings.py
-import os
-
-PUPPETDB_HOST = 'puppetdb'
-PUPPETDB_PORT = 8081
-PUPPETDB_SSL_VERIFY = False
-PUPPETDB_KEY = '/app/puppetboard.key'
-PUPPETDB_CERT = '/app/puppetboard.crt'
-```
-
 You'll need to create a keypair signed by your Puppet CA for `puppetboard.key` and `puppetboard.crt`.
 
-Now launch docker:
+Now launch docker, specifying the PuppetDB location and keys:
 
 ```shell
-docker run -p 80:80 --add-host puppetdb:<your_puppetdb_ip> \
-  -v $PWD/wsgi.py:/app/wsgi.py \
-  -v $PWD/default_settings.py:/app/default_settings.py \
+docker run -p 80:80 \
+  --add-host puppetdb:<your_puppetdb_ip> \
   -v $PWD/puppetboard.crt:/app/puppetboard.crt \
   -v $PWD/puppetboard.key:/app/puppetboard.key \
   -ti camptocamp/puppetboard:latest
 ```
 
-and Puppetboard will be available on your `http://localhost`
+and Puppetboard will be available on your `http://localhost`!
+
+
+You can also use environment variables to specify the PuppetDB and port:
+
+```shell
+docker run -p 80:80 \
+  -e PUPPETDB_HOST=<your_puppetdb_ip> \
+  -e PUPPETDB_PORT=8081 \
+  -v $PWD/puppetboard.crt:/app/puppetboard.crt \
+  -v $PWD/puppetboard.key:/app/puppetboard.key \
+  -ti camptocamp/puppetboard:latest
+```
