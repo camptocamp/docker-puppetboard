@@ -5,10 +5,12 @@ set -eo pipefail
 apt-get update &&
 apt-get install -y git &&
 rm -rf /var/lib/apt/lists/*
-cd /
-rm -rf /app
-git clone https://github.com/puppet-community/puppetboard.git /app
 cd /app
+rm -rf .git
+rm -f .gitignore
+git init .
+git remote add origin https://github.com/puppet-community/puppetboard.git
+git remote update
 git checkout 9fbd283
 cat << EOF > settings.py
 import os
