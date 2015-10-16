@@ -2,8 +2,9 @@
 
 set -eo pipefail
 
-apt-get update
-apt-get install -y git
+apt-get update &&
+apt-get install -y git &&
+rm -rf /var/lib/apt/lists/*
 cd /
 rm -rf /app
 git clone https://github.com/puppet-community/puppetboard.git /app
