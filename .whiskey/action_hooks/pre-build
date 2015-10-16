@@ -8,6 +8,7 @@ cd /
 rm -rf /app
 git clone https://github.com/puppet-community/puppetboard.git /app
 cd /app
+git checkout 9fbd283
 cat << EOF > settings.py
 import os
 
