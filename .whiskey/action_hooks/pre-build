@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+PUPPETBOARD_VERSION='v0.0.5'
+
 apt-get update &&
 apt-get install -y git &&
 rm -rf /var/lib/apt/lists/*
@@ -11,7 +13,7 @@ rm -f .gitignore
 git init .
 git remote add origin https://github.com/puppet-community/puppetboard.git
 git remote update
-git checkout 9fbd283
+git checkout ${PUPPETBOARD_VERSION}
 cat << EOF > settings.py
 import os
 
