@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-PUPPETBOARD_VERSION='v0.0.5'
+PUPPETBOARD_VERSION='v0.1.0'
 
 apt-get update &&
 apt-get install -y git &&
