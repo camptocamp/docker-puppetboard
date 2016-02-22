@@ -1,3 +1,3 @@
 FROM grahamdumpleton/mod-wsgi-docker:python-2.7-onbuild
 
-CMD [ "--mountpoint", "/puppetboard", "wsgi.py" ]
+CMD [ "--mount-point", "/puppetboard", "wsgi.py" ]
