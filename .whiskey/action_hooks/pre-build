@@ -24,4 +24,5 @@ if os.getenv('PUPPETBOARD_USE_SSL') == 'True':
   PUPPETDB_KEY =        os.getenv('PUPPETBOARD_PUPPETDB_KEY', '/app/puppetboard.key')
   PUPPETDB_CERT =       os.getenv('PUPPETBOARD_PUPPETDB_CERT', '/app/puppetboard.crt')
 DEFAULT_ENVIRONMENT = os.getenv('PUPPETBOARD_DEFAULT_ENVIRONMENT', '*')
+OVERVIEW_FILTER = os.getenv('PUPPETBOARD_OVERVIEW_FILTER', '')
 EOF
