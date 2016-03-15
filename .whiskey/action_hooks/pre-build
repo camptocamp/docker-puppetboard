@@ -11,7 +11,8 @@ cd /app
 rm -rf .git
 rm -f .gitignore
 git init .
-git remote add origin https://github.com/puppet-community/puppetboard.git
+git config --global http.sslverify false
+git remote add origin https://github.com/voxpupuli/puppetboard.git
 git remote update
 git checkout ${PUPPETBOARD_VERSION}
 cat << EOF > settings.py
