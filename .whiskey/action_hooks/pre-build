@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-PUPPETBOARD_VERSION='v0.1.2'
+PUPPETBOARD_VERSION='overview_filter'
 
 apt-get update &&
 apt-get install -y git &&
@@ -11,7 +11,7 @@ cd /app
 rm -rf .git
 rm -f .gitignore
 git init .
-git remote add origin https://github.com/voxpupuli/puppetboard.git
+git remote add origin https://github.com/raphink/puppetboard.git
 git fetch --tags
 git checkout ${PUPPETBOARD_VERSION}
 cat << EOF > settings.py
@@ -24,4 +24,5 @@ if os.getenv('PUPPETBOARD_USE_SSL') == 'True':
   PUPPETDB_KEY =        os.getenv('PUPPETBOARD_PUPPETDB_KEY', '/app/puppetboard.key')
   PUPPETDB_CERT =       os.getenv('PUPPETBOARD_PUPPETDB_CERT', '/app/puppetboard.crt')
 DEFAULT_ENVIRONMENT = os.getenv('PUPPETBOARD_DEFAULT_ENVIRONMENT', '*')
+OVERVIEW_FILTER = os.getenv('PUPPETBOARD_OVERVIEW_FILTER', '')
 EOF
