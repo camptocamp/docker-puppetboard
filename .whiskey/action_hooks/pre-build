@@ -11,8 +11,8 @@ cd /app
 rm -rf .git
 rm -f .gitignore
 git init .
-git remote add origin https://github.com/puppet-community/puppetboard.git
-git remote update
+git remote add origin https://github.com/voxpupuli/puppetboard.git
+git fetch --tags
 git checkout ${PUPPETBOARD_VERSION}
 cat << EOF > settings.py
 import os
