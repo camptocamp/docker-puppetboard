@@ -16,6 +16,7 @@ git fetch --tags
 git checkout ${PUPPETBOARD_VERSION}
 cat << EOF > settings.py
 import os
+import ast
 
 PUPPETDB_HOST =       os.getenv('PUPPETBOARD_PUPPETDB_HOST', 'puppetdb')
 PUPPETDB_PORT =       int(os.getenv('PUPPETBOARD_PUPPETDB_PORT', '8080'))
@@ -25,4 +26,5 @@ if os.getenv('PUPPETBOARD_USE_SSL') == 'True':
   PUPPETDB_CERT =       os.getenv('PUPPETBOARD_PUPPETDB_CERT', '/app/puppetboard.crt')
 DEFAULT_ENVIRONMENT = os.getenv('PUPPETBOARD_DEFAULT_ENVIRONMENT', '*')
 OVERVIEW_FILTER = os.getenv('PUPPETBOARD_OVERVIEW_FILTER', '')
+INVENTORY_FACTS = ast.literal_eval(os.getenv('PUPPETBOARD_INVENTORY_FACTS', '[('Hostname', 'fqdn'), ('IP Address', 'ipaddress'), ('OS', 'lsbdistdescription'), ('Architecture', 'hardwaremodel'), ('Kernel Version', 'kernelrelease'), ('Puppet Version', 'puppetversion'), ]'))
 EOF
