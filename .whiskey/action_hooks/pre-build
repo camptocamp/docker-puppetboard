@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-PUPPETBOARD_VERSION='v0.2.0'
+PUPPETBOARD_VERSION='v0.2.2'
 
 apt-get update &&
 apt-get install -y git &&
@@ -13,7 +13,7 @@ rm -f .gitignore
 git init .
 git remote add origin https://github.com/voxpupuli/puppetboard.git
 git fetch --tags
-git checkout ${PUPPETBOARD_VERSION}
+git checkout -f ${PUPPETBOARD_VERSION}
 cat << EOF > settings.py
 import os
 import ast
