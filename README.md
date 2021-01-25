@@ -6,6 +6,13 @@ Puppetboard Docker image
 [![By Camptocamp](https://img.shields.io/badge/by-camptocamp-fb7047.svg)](http://www.camptocamp.com)
 
 
+
+
+THIS REPOSITORY IS NOT USED ANYMORE. INSTEAD, THE OFFICIAL DOCKERFILE FROM THE PUPPETBOARD PROJECT IS USED TO BUILD THE CAMPTOCAMP IMAGE.
+
+
+
+
 ## How to use
 
 By default, Puppetboard looks for a PuppetDB on `localhost:8080`, so you need to deploy a configuration file for it.
